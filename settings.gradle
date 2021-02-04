@@ -1,0 +1,4 @@
+rootProject.name = 'Kodilla-Course'
+include 'kodilla-spring-web'
+include 'kodilla-patterns'
+
