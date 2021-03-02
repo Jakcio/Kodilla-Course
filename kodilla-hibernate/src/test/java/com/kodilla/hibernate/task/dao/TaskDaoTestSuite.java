@@ -1,28 +1,25 @@
 package com.kodilla.hibernate.task.dao;
 
-
-import com.kodilla.hibernate.Task;
-import org.junit.Test;
+import com.kodilla.hibernate.task.Task;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class TaskDaoTestSuite {
-
-    private static final String DESCRIPTION = "Test: Learn Hibernate";
+class TaskDaoTestSuite {
 
     @Autowired
     private TaskDao taskDao;
 
-    @Test
-    public void testTaskDaoSave() {
+    private static final String DESCRIPTION = "Test: Learn Hibernate";
 
+    @Test
+    void testTaskDaoSave() {
         //Given
         Task task = new Task(DESCRIPTION, 7);
 
@@ -39,7 +36,7 @@ public class TaskDaoTestSuite {
     }
 
     @Test
-    public void testTaskDaoFindByDuration() {
+    void testTaskDaoFindByDuration() {
         //Given
         Task task = new Task(DESCRIPTION, 7);
         taskDao.save(task);
@@ -52,10 +49,7 @@ public class TaskDaoTestSuite {
         assertEquals(1, readTasks.size());
 
         //CleanUp
-        //int id = readTasks.get(0).getId();
-        //taskDao.deleteById(id);
+        int id = readTasks.get(0).getId();
+        taskDao.deleteById(id);
     }
 }
-
-
-

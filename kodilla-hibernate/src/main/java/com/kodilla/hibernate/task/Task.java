@@ -1,13 +1,12 @@
-package com.kodilla.hibernate;
+package com.kodilla.hibernate.task;
 
-import com.sun.istack.NotNull;
-
-import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @Table(name = "TASKS")
-public class Task {
+public final class Task {
 
     private int id;
     private String description;
@@ -26,21 +25,23 @@ public class Task {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name="ID", unique=true)
+    @Column(name = "ID", unique = true)
     public int getId() {
         return id;
     }
+
     @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
 
     @NotNull
-    @Column(name = "CREATED")
+    @Column(name="CREATED")
     public Date getCreated() {
         return created;
     }
-    @Column(name = "DURATION")
+
+    @Column(name="DURATION")
     public int getDuration() {
         return duration;
     }
@@ -60,5 +61,4 @@ public class Task {
     private void setDuration(int duration) {
         this.duration = duration;
     }
-
 }
